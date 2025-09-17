@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-cafe: #4c3d19;
+    --color-kombu: #354024;
+    --color-kombu-darker: #161a0f;
+    --color-kombu-mid: #212716;
+    --color-moss: #889063;
+    --color-tan: #cfbb99;
+    --color-bone: #e5d7c4;
+
+    --animate-bob: bob 1s ease-in-out infinite;
+
+    --font-sigmar: "Sigmar One", sans-serif;
+    --font-badeen: "Badeen Display", system-ui;
+    --font-sonsie: "Sonsie One", system-ui;
+
+
+    /* @keyframes bob {
+
+        0%,
+        100% {
+            transform: translate(0, .75rem);
+        }
+
+        50% {
+            transform: translate(0,.5rem);
+        }
+    } */
+}
