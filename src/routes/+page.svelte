@@ -1,10 +1,9 @@
 <script>
     import { MoveDown, Plus } from "@lucide/svelte";
-    import Topo from "$lib/assets/topo.svelte";
     import ContentCard from "$lib/components/ContentCard.svelte";
     import { onMount } from "svelte";
 
-    let fonts = ["badeen", "sigmar", "sonsie"]
+    let fonts = ["Badeen Display", "Sigmar One", "Sonsie One"]
     let titleFont = fonts[0];
     let pauseFont = false;
 
@@ -16,7 +15,8 @@
         pauseFont = false;
     }
 
-    onMount(() => {
+    onMount(async () => {
+        await document.fonts.ready;
         function animateFont() {
             if (pauseFont) return;
             const validFonts = fonts.filter((fontName) => {
@@ -25,7 +25,6 @@
 
             const index = Math.floor(Math.random() * validFonts.length);
             titleFont = validFonts[index]
-            console.log(index);
         }
         setInterval(animateFont, 500)
     })
@@ -40,11 +39,12 @@
     <!-- Title -->
     <div class="flex h-screen items-center justify-center">
         <div class="flex bg-kombu items-center">
-            <h1 class="text-9xl font-extrabold text-bone font-{titleFont}" on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}>Flynn May</h1>
+            <!-- svelte-ignore a11y_mouse_events_have_key_events -->
+            <h1 class="text-9xl font-extrabold text-bone" style="font-family: {titleFont}" on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}>Flynn May</h1>
         </div>
 
-        <!-- <div class="bg-kombu min-w-screen"><Plus class="text-white" /></div> -->
     </div>
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 bg-kombu"><MoveDown class="text-white animate-bob" /></div>
 
     <!-- Content -->
     <div class="flex flex-col min-w-full min-h-screen items-center space-y-10">
